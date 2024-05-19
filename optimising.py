@@ -20,7 +20,7 @@ L_u = meshes.laplacian_packed().to_dense()
 I_m = torch.eye(num_verts)
 A = torch.cat((L_u, I_m), dim=0)
 
-laplacian = laplacian_coordinates(verts, meshes)
+laplacian = laplacian_coordinates(verts, meshes, True)
 
 x = verts[:, 0]
 y = verts[:, 1]
@@ -34,4 +34,4 @@ x_solution = torch.inverse(A.t() @ A) @ A.t() @ b
 new_verts = x_solution
 verts = new_verts
 meshes = Meshes(verts=[verts], faces=[faces.verts_idx])
-IO().save_mesh(meshes, "Models/optimized_model.obj")
+IO().save_mesh(meshes, "Models/optimized_model1.obj")
