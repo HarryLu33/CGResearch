@@ -4,7 +4,7 @@ from pytorch3d.io import load_obj, IO
 from pytorch3d.structures import Meshes
 
 # Load the dolphin mesh
-filename = "dolphin.obj"
+filename = "Models/dolphin.obj"
 verts, faces, aux = load_obj(filename)
 meshes = Meshes(verts=[verts], faces=[faces.verts_idx])
 
@@ -17,4 +17,4 @@ noisy_verts = verts + noise
 noisy_meshes = Meshes(verts=[noisy_verts], faces=[faces.verts_idx])
 
 # You can visualize the noisy mesh or perform further operations with it
-IO().save_mesh(noisy_meshes, "noisy_mesh.obj")
+IO().save_mesh(noisy_meshes, "Models/noisy_mesh.obj")

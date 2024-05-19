@@ -9,7 +9,7 @@ print(f"CUDA version: {torch.version.cuda}")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
-filename = "noisy_mesh.obj"
+filename = "Models/noisy_mesh.obj"
 verts, faces, aux = load_obj(filename)
 meshes = Meshes(verts=[verts], faces=[faces.verts_idx])
 num_verts = verts.shape[0] if isinstance(verts, torch.Tensor) else len(verts)
@@ -34,4 +34,4 @@ x_solution = torch.inverse(A.t() @ A) @ A.t() @ b
 new_verts = x_solution
 verts = new_verts
 meshes = Meshes(verts=[verts], faces=[faces.verts_idx])
-IO().save_mesh(meshes, "optimized_model.obj")
+IO().save_mesh(meshes, "Models/optimized_model.obj")
