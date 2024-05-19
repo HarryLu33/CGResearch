@@ -77,14 +77,14 @@ def get_all_neighbours(verts, edges):
 def calculate_cotangent(A, B, C):
     AB = B - A
     AC = C - A
-    dot_product = torch.dot(AB, AC)
 
     magnitude_AB = torch.norm(AB)
     magnitude_AC = torch.norm(AC)
 
+    dot_product = torch.dot(AB, AC)
     cosine_angle_A = dot_product / (magnitude_AB * magnitude_AC)
 
-    cross_product_magnitude = torch.abs(AB[0] * AC[1] - AB[1] * AC[0])
-    sine_angle_A = cross_product_magnitude / (magnitude_AB * magnitude_AC)
+    cross_product = torch.cross(AB, AC)
+    sine_angle_A = torch.norm(cross_product) / (magnitude_AB * magnitude_AC)
 
     return cosine_angle_A / sine_angle_A
