@@ -1,11 +1,9 @@
 import torch
-from pytorch3d.structures import Meshes
 
 
-def laplacian_coordinates(verts, meshes: Meshes, constant_weight=True):
+def laplacian_coordinates(verts, all_neighbours_indexes, constant_weight=True):
     num_vertices = len(verts)
     laplacian = torch.zeros((num_vertices, 3), dtype=torch.float)
-    all_neighbours_indexes = get_all_neighbours(verts, meshes.edges_packed())
 
     i = 0
     for vi in verts:
@@ -47,31 +45,6 @@ def laplacian_coordinates(verts, meshes: Meshes, constant_weight=True):
         i += 1
 
     return laplacian
-
-
-def get_neighbour_vertex(edges, index):
-    vi = []
-    for edge in edges:
-        if edge[0] == index:
-            vi.append(edge[1])
-        elif edge[1] == index:
-            vi.append(edge[0])
-    return vi
-
-
-def get_all_neighbours(verts, edges):
-    neighbour_dict = {}
-    i = 0
-    while i < len(verts):
-        vi = []
-        for edge in edges:
-            if edge[0] == i:
-                vi.append(edge[1].item())
-            elif edge[1] == i:
-                vi.append(edge[0].item())
-        neighbour_dict[i] = vi
-        i += 1
-    return neighbour_dict
 
 
 def calculate_cotangent(A, B, C):
