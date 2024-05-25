@@ -1,31 +1,29 @@
+import statistics
+
 import torch
 from pytorch3d.io import load_obj, IO
 from pytorch3d.structures import Meshes
 from get_neighbours_utils import get_all_neighbours
 from hc_utils import hc_algorithm
 from laplacian_utils import laplacian_coordinates
+from radius_ratio import radius_ratio_array
 
 
-def laplacian_optimization(filename, us_HC: bool, turns=1):
-    laplacian_operation(filename, "optimization", us_HC, turns)
+def laplacian_optimization(filename, weight, us_HC: bool, B, turns):
+    laplacian_operation(filename, "optimization", weight, us_HC, B, turns)
 
 
-def laplacian_smoothing(filename, us_HC: bool, turns=1):
-    laplacian_operation(filename, "smoothing", us_HC, turns)
+def laplacian_smoothing(filename, weight, us_HC: bool, B, turns):
+    laplacian_operation(filename, "smoothing", weight, us_HC, B, turns)
 
 
-def laplacian_operation(filename, option, us_HC: bool, turns):
-    # check cuda
-    print(f"CUDA version: {torch.version.cuda}")
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Using device: {device}")
-
+def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
     # constants
-    file_path = "Models"
-    file_extension = ".obj"
+    folder = "Models"
+    extension = ".obj"
 
     # load meshes
-    verts, faces, aux = load_obj(file_path + "/" + filename + file_extension)
+    verts, faces, aux = load_obj(folder + "/" + filename + extension)
     meshes = Meshes(verts=[verts], faces=[faces.verts_idx])
     num_verts = verts.shape[0] if isinstance(verts, torch.Tensor) else len(verts)
 
@@ -47,7 +45,7 @@ def laplacian_operation(filename, option, us_HC: bool, turns):
         # set f = delta_dc in detail preserving optimization
         if option == "optimization":
             # use cotangent weight
-            delta_dc = laplacian_coordinates(verts, all_neighbours_indexes, False)
+            delta_dc = laplacian_coordinates(verts, all_neighbours_indexes, weight)
             f = delta_dc
         # set f = 0 in mesh smoothing
         elif option == "smoothing":
@@ -67,16 +65,24 @@ def laplacian_operation(filename, option, us_HC: bool, turns):
 
         if us_HC:
             # use HC algorithm to push the modified points back towards the previous point
-            final_verts_hc = hc_algorithm(verts, new_verts, all_neighbours_indexes, 0.8)
+            final_verts_hc = hc_algorithm(verts, new_verts, all_neighbours_indexes, B)
             meshes = Meshes(verts=[final_verts_hc], faces=[faces.verts_idx])
-            save_to = file_path + "/" + option + "/" + filename + "_" + option + "_hc" + "_" + str(t) + file_extension
+            save_to = folder + "/" + option + "/" + filename + "_" + option + "_hc_" + str(
+                B) + "_" + weight + "_" + str(t) + extension
             IO().save_mesh(meshes, save_to)
             verts = final_verts_hc
         else:
             final_verts = new_verts
             meshes = Meshes(verts=[final_verts], faces=[faces.verts_idx])
-            save_to = file_path + "/" + option + "/" + filename + "_" + option + "_" + str(t) + file_extension
+            save_to = folder + "/" + option + "/" + filename + "_" + option + "_" + weight + "_" + str(t) + extension
             IO().save_mesh(meshes, save_to)
             verts = final_verts
 
+        radius_ratios = radius_ratio_array(meshes)
+        log = (save_to + "\n" +
+               "maximum radius ratio: " + str(max(radius_ratios)) + "\n" +
+               "median radius ratio: " + str(statistics.median(radius_ratios)) + "\n" +
+               "mean radius ratio: " + str(statistics.mean(radius_ratios)) + "\n" +
+               "minimum radius ratio: " + str(min(radius_ratios)) + "\n")
+        print(log)
         t += 1

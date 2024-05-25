@@ -1,7 +1,7 @@
 import torch
 
 
-def laplacian_coordinates(verts, all_neighbours_indexes, constant_weight=True):
+def laplacian_coordinates(verts, all_neighbours_indexes, weight):
     num_vertices = len(verts)
     laplacian = torch.zeros((num_vertices, 3), dtype=torch.float)
 
@@ -10,13 +10,13 @@ def laplacian_coordinates(verts, all_neighbours_indexes, constant_weight=True):
         neighbour_indexes = all_neighbours_indexes[i]
         delta = torch.tensor([0, 0, 0], dtype=torch.float)
         # use constant weight
-        if constant_weight:
+        if weight == "constant":
             weight = 1.0 / len(neighbour_indexes)
             for j in neighbour_indexes:
                 vj = verts[j]
                 delta += weight * (vi - vj)
         # use cotangent weight
-        else:
+        elif weight == "cotangent":
             w_ik_sum = 0.0
             w_ij_dict = {}
             for k in neighbour_indexes:
