@@ -4,121 +4,145 @@ C:\Users\24105\anaconda3\envs\pytorch3d\lib\site-packages\pytorch3d\io\obj_io.py
 Models/smoothing/noisy_mesh_smoothing_cotangent_1.obj
 maximum radius ratio: 0.9996770452887577
 median radius ratio: 0.606969090523592
+mean radius ratio: 0.5740281238318743
 minimum radius ratio: 3.6270404356472327e-06
 
 Models/smoothing/noisy_mesh_smoothing_cotangent_2.obj
 maximum radius ratio: 0.9992995031797425
 median radius ratio: 0.6144786419623732
+mean radius ratio: 0.5747789821169196
 minimum radius ratio: 0.009161041075326736
 
 Models/smoothing/noisy_mesh_smoothing_cotangent_3.obj
 maximum radius ratio: 0.9998947940592869
 median radius ratio: 0.6121156388413452
+mean radius ratio: 0.5752434241863191
 minimum radius ratio: 0.02566868286569321
 
 Models/smoothing/noisy_mesh_smoothing_cotangent_4.obj
 maximum radius ratio: 0.9998661353588447
 median radius ratio: 0.6146662088554125
+mean radius ratio: 0.5755007398184062
 minimum radius ratio: 0.03533805802912521
 
 Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_1.obj
 maximum radius ratio: 0.9998271231767206
 median radius ratio: 0.6060248976489361
+mean radius ratio: 0.5736780890965771
 minimum radius ratio: 0.002150136534116452
 
 Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_2.obj
 maximum radius ratio: 0.9999418749287089
 median radius ratio: 0.6045175609050253
+mean radius ratio: 0.573425745791954
 minimum radius ratio: 0.000519870530585472
 
 Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_3.obj
 maximum radius ratio: 0.999694152807875
 median radius ratio: 0.607314409385066
+mean radius ratio: 0.5734680500584858
 minimum radius ratio: 9.490811791836846e-05
 
 Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_4.obj
 maximum radius ratio: 0.9996663053847179
 median radius ratio: 0.6095651920167522
+mean radius ratio: 0.5735943200267364
 minimum radius ratio: 0.002481462973108757
 
 Models/smoothing/Teddy_smoothing_cotangent_1.obj
 maximum radius ratio: 0.9999892885563346
 median radius ratio: 0.8428327699439129
+mean radius ratio: 0.7916944187942341
 minimum radius ratio: 0.03168078368931756
 
 Models/smoothing/Teddy_smoothing_cotangent_2.obj
 maximum radius ratio: 0.9999968009793897
 median radius ratio: 0.8663894373261709
+mean radius ratio: 0.8151138061328181
 minimum radius ratio: 0.07966913694060132
 
 Models/smoothing/Teddy_smoothing_cotangent_3.obj
 maximum radius ratio: 0.9999038275324157
 median radius ratio: 0.8781930528902124
+mean radius ratio: 0.8249382380098828
 minimum radius ratio: 0.06966555984738525
 
 Models/smoothing/Teddy_smoothing_cotangent_4.obj
 maximum radius ratio: 0.9999092108295115
 median radius ratio: 0.8821311152088763
+mean radius ratio: 0.8304903007288613
 minimum radius ratio: 0.03420218433059831
 
 Models/smoothing/Teddy_smoothing_hc_0.6_cotangent_1.obj
 maximum radius ratio: 0.9999694065041872
 median radius ratio: 0.803741027079903
+mean radius ratio: 0.7506561948215714
 minimum radius ratio: 0.008239493081014144
 
 Models/smoothing/Teddy_smoothing_hc_0.6_cotangent_2.obj
 maximum radius ratio: 0.9999978839975139
 median radius ratio: 0.8237627634475543
+mean radius ratio: 0.7731585168690349
 minimum radius ratio: 0.01751857339703733
 
 Models/smoothing/Teddy_smoothing_hc_0.6_cotangent_3.obj
 maximum radius ratio: 0.9999832391757398
 median radius ratio: 0.838956713413413
+mean radius ratio: 0.7862989106031703
 minimum radius ratio: 0.025723510251498247
 
 Models/smoothing/Teddy_smoothing_hc_0.6_cotangent_4.obj
 maximum radius ratio: 0.9999393339935663
 median radius ratio: 0.847623508256995
+mean radius ratio: 0.7946558323385821
 minimum radius ratio: 0.03571083534590148
 
 Models/optimization/Teddy_optimization_cotangent_1.obj
 maximum radius ratio: 0.9998674373593923
 median radius ratio: 0.8428396340444149
+mean radius ratio: 0.7916389263375352
 minimum radius ratio: 0.03199830751777153
 
 Models/optimization/Teddy_optimization_cotangent_2.obj
 maximum radius ratio: 0.9999624316643145
 median radius ratio: 0.8637618701528078
+mean radius ratio: 0.8101563012114292
 minimum radius ratio: 0.049670639582549664
 
 Models/optimization/Teddy_optimization_cotangent_3.obj
 maximum radius ratio: 0.9999471770170837
 median radius ratio: 0.8718026404254391
+mean radius ratio: 0.8177919547183017
 minimum radius ratio: 0.01825272573204249
 
 Models/optimization/Teddy_optimization_cotangent_4.obj
 maximum radius ratio: 0.9999913559928904
 median radius ratio: 0.8753956083537071
+mean radius ratio: 0.8217854668455713
 minimum radius ratio: 0.012620754308313826
 
 Models/optimization/Teddy_optimization_hc_0.6_cotangent_1.obj
 maximum radius ratio: 0.9999818977669941
 median radius ratio: 0.8029728420756689
+mean radius ratio: 0.7505250399047119
 minimum radius ratio: 0.008545289256373444
 
 Models/optimization/Teddy_optimization_hc_0.6_cotangent_2.obj
 maximum radius ratio: 0.9999956257062526
 median radius ratio: 0.8229348055479053
+mean radius ratio: 0.7717421664658853
 minimum radius ratio: 0.0141565939830889
 
 Models/optimization/Teddy_optimization_hc_0.6_cotangent_3.obj
 maximum radius ratio: 0.9999447518594156
 median radius ratio: 0.8375485985992422
+mean radius ratio: 0.7835126759479795
 minimum radius ratio: 0.02042465416859463
 
 Models/optimization/Teddy_optimization_hc_0.6_cotangent_4.obj
 maximum radius ratio: 0.999947402011539
 median radius ratio: 0.8459960877323061
+mean radius ratio: 0.7907685856723132
 minimum radius ratio: 0.025671851439920262
 
 
