@@ -1,49 +1,49 @@
 C:\Users\24105\anaconda3\envs\pytorch3d\python.exe F:\pythonProject\CGResearch\main.py 
 C:\Users\24105\anaconda3\envs\pytorch3d\lib\site-packages\pytorch3d\io\obj_io.py:546: UserWarning: No mtl file provided
   warnings.warn("No mtl file provided")
-Models/smoothing/noisy_mesh_smoothing_cotangent_1.obj
+Models/smoothing/noisy_dolphin_smoothing_cotangent_1.obj
 maximum radius ratio: 0.9996770452887577
 median radius ratio: 0.606969090523592
 mean radius ratio: 0.5740281238318743
 minimum radius ratio: 3.6270404356472327e-06
 
-Models/smoothing/noisy_mesh_smoothing_cotangent_2.obj
+Models/smoothing/noisy_dolphin_smoothing_cotangent_2.obj
 maximum radius ratio: 0.9992995031797425
 median radius ratio: 0.6144786419623732
 mean radius ratio: 0.5747789821169196
 minimum radius ratio: 0.009161041075326736
 
-Models/smoothing/noisy_mesh_smoothing_cotangent_3.obj
+Models/smoothing/noisy_dolphin_smoothing_cotangent_3.obj
 maximum radius ratio: 0.9998947940592869
 median radius ratio: 0.6121156388413452
 mean radius ratio: 0.5752434241863191
 minimum radius ratio: 0.02566868286569321
 
-Models/smoothing/noisy_mesh_smoothing_cotangent_4.obj
+Models/smoothing/noisy_dolphin_smoothing_cotangent_4.obj
 maximum radius ratio: 0.9998661353588447
 median radius ratio: 0.6146662088554125
 mean radius ratio: 0.5755007398184062
 minimum radius ratio: 0.03533805802912521
 
-Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_1.obj
+Models/smoothing/noisy_dolphin_smoothing_hc_0.6_cotangent_1.obj
 maximum radius ratio: 0.9998271231767206
 median radius ratio: 0.6060248976489361
 mean radius ratio: 0.5736780890965771
 minimum radius ratio: 0.002150136534116452
 
-Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_2.obj
+Models/smoothing/noisy_dolphin_smoothing_hc_0.6_cotangent_2.obj
 maximum radius ratio: 0.9999418749287089
 median radius ratio: 0.6045175609050253
 mean radius ratio: 0.573425745791954
 minimum radius ratio: 0.000519870530585472
 
-Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_3.obj
+Models/smoothing/noisy_dolphin_smoothing_hc_0.6_cotangent_3.obj
 maximum radius ratio: 0.999694152807875
 median radius ratio: 0.607314409385066
 mean radius ratio: 0.5734680500584858
 minimum radius ratio: 9.490811791836846e-05
 
-Models/smoothing/noisy_mesh_smoothing_hc_0.6_cotangent_4.obj
+Models/smoothing/noisy_dolphin_smoothing_hc_0.6_cotangent_4.obj
 maximum radius ratio: 0.9996663053847179
 median radius ratio: 0.6095651920167522
 mean radius ratio: 0.5735943200267364
