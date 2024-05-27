@@ -28,7 +28,7 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
 
     # load vertices neighbour relations
     all_neighbours_indexes = None
-    if (option == "optimization") | us_HC:
+    if option == "optimization":
         all_neighbours_indexes = get_all_neighbours(verts, meshes.laplacian_packed().to_dense())
 
     t = 1
