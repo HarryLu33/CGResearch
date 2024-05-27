@@ -64,13 +64,13 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
 
         if us_HC:
             # use HC algorithm to push the modified points back towards the previous point
-            b_i = new_verts - verts
-            b_i_meshes = Meshes(verts=[b_i], faces=[faces.verts_idx])
-            L_u_hc = b_i_meshes.laplacian_packed().to_dense()
+            B_i = new_verts - verts
+            B_i_meshes = Meshes(verts=[B_i], faces=[faces.verts_idx])
+            L_u_hc = B_i_meshes.laplacian_packed().to_dense()
             A = torch.cat((L_u_hc, I_m), dim=0)
-            b = torch.cat((torch.zeros(num_verts, 3), b_i), dim=0)
-            b_j_mean = torch.inverse(A.t() @ A) @ A.t() @ b
-            final_verts_hc = new_verts - (B * b_i + (1 - B) * b_j_mean)
+            b = torch.cat((torch.zeros(num_verts, 3), B_i), dim=0)
+            B_j_mean = torch.inverse(A.t() @ A) @ A.t() @ b
+            final_verts_hc = new_verts - (B * B_i + (1 - B) * B_j_mean)
 
             meshes = Meshes(verts=[final_verts_hc], faces=[faces.verts_idx])
             save_to = folder + "/" + option + "/" + filename + "_" + option + "_hc_" + str(
