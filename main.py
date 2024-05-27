@@ -1,7 +1,7 @@
 from laplacian_mesh_operation import laplacian_smoothing, laplacian_optimization
 
 turns = 4
-weight = "cotangent"
+weight = "constant"
 B = 0.6
 
 laplacian_smoothing("noisy_dolphin", weight, False, B, turns)
