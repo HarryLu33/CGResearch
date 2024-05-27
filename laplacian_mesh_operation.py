@@ -4,7 +4,6 @@ import torch
 from pytorch3d.io import load_obj, IO
 from pytorch3d.structures import Meshes
 from get_neighbours_utils import get_all_neighbours
-from hc_utils import hc_algorithm
 from laplacian_utils import laplacian_coordinates
 from radius_ratio import radius_ratio_array
 
@@ -30,7 +29,7 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
     # load vertices neighbour relations
     all_neighbours_indexes = None
     if (option == "optimization") | us_HC:
-        all_neighbours_indexes = get_all_neighbours(verts, meshes.edges_packed())
+        all_neighbours_indexes = get_all_neighbours(verts, meshes.laplacian_packed().to_dense())
 
     t = 1
     while t <= turns:
@@ -65,7 +64,14 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
 
         if us_HC:
             # use HC algorithm to push the modified points back towards the previous point
-            final_verts_hc = hc_algorithm(verts, new_verts, all_neighbours_indexes, B)
+            b_i = new_verts - verts
+            b_i_meshes = Meshes(verts=[b_i], faces=[faces.verts_idx])
+            L_u_hc = b_i_meshes.laplacian_packed().to_dense()
+            A = torch.cat((L_u_hc, I_m), dim=0)
+            b = torch.cat((torch.zeros(num_verts, 3), b_i), dim=0)
+            b_j_mean = torch.inverse(A.t() @ A) @ A.t() @ b
+            final_verts_hc = new_verts - (B * b_i + (1 - B) * b_j_mean)
+
             meshes = Meshes(verts=[final_verts_hc], faces=[faces.verts_idx])
             save_to = folder + "/" + option + "/" + filename + "_" + option + "_hc_" + str(
                 B) + "_" + weight + "_" + str(t) + extension
