@@ -36,11 +36,7 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
     t = 1
     while t <= turns:
         # get the Laplacian matrix for the whole mesh
-        if weight == "constant":
-            L = meshes.laplacian_packed().to_dense()
-        else:
-            L, inv_areas = cot_laplacian(meshes.verts_packed(), meshes.faces_packed())
-            L = L.to_dense()
+        L_u = meshes.laplacian_packed().to_dense()
 
         x = verts[:, 0]
         y = verts[:, 1]
@@ -52,6 +48,11 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
         # set f = delta_dc in detail preserving optimization
         if option == "optimization":
             # use cotangent weight
+            if weight == "constant":
+                L = meshes.laplacian_packed().to_dense()
+            else:
+                L, inv_areas = cot_laplacian(meshes.verts_packed(), meshes.faces_packed())
+
             delta_dc = L @ V_d
             f = delta_dc
         # set f = 0 in mesh smoothing
@@ -62,8 +63,8 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
         # use uniform weights W_p = I
         I_m = torch.eye(num_verts)
 
-        # concatenate L and W_p to get A, use W_l = I
-        A = torch.cat((L, I_m), dim=0)
+        # concatenate L_u and W_p to get A, use W_l = I
+        A = torch.cat((L_u, I_m), dim=0)
         # concatenate f and V_d to get A, use W_l = I, W_p = I
         b = torch.cat((f, V_d), dim=0)
 
@@ -74,13 +75,9 @@ def laplacian_operation(filename, option, weight, us_HC: bool, B, turns):
             # use HC algorithm to push the modified points back towards the previous point
             b_i = new_verts - verts
             meshes = Meshes(verts=[b_i], faces=[faces.verts_idx])
-            if weight == "constant":
-                L = meshes.laplacian_packed().to_dense()
-            else:
-                L, inv_areas = cot_laplacian(meshes.verts_list(), meshes.faces_packed())
-                L = L.to_dense()
+            L_u = meshes.laplacian_packed().to_dense()
 
-            A = torch.cat((L, I_m), dim=0)
+            A = torch.cat((L_u, I_m), dim=0)
             b = torch.cat((f, b_i), dim=0)
             b_j_mean = torch.inverse(A.t() @ A) @ A.t() @ b
             final_verts_hc = new_verts - (B * b_i + (1 - B) * b_j_mean)
