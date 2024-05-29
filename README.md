@@ -53,3 +53,7 @@ This file defines a function to compute the Laplacian coordinates of vertices in
 This file provides two main functions:
 - laplacian_coordinates: This function computes the Laplacian coordinates for each vertex in the mesh.
 - calculate_cotangent: This function calculates the cotangent of the angle formed by three vertices A, B, and C.
+## External Libraries
+- PyTorch
+- PyTorch3d
+- Numpy
