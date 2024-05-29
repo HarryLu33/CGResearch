@@ -9,8 +9,8 @@ def laplacian_coordinates(verts, all_neighbours_indexes, weight):
     for vi in verts:
         neighbour_indexes = all_neighbours_indexes[i]
         delta = torch.tensor([0, 0, 0], dtype=torch.float)
-        # use constant weight
-        if weight == "constant":
+        # use uniform weight
+        if weight == "uniform":
             weight = 1.0 / len(neighbour_indexes)
             for j in neighbour_indexes:
                 vj = verts[j]
