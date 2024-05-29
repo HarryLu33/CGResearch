@@ -1,5 +1,4 @@
 import statistics
-
 import torch
 from pytorch3d.io import load_obj, IO
 from pytorch3d.structures import Meshes

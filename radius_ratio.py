@@ -3,11 +3,6 @@ from numpy import ndarray
 from pytorch3d.structures import Meshes
 
 
-# Define the three points
-# A = np.array([0, 9, 0])
-# B = np.array([9, 0, 0])
-# C = np.array([0, 0, 9])
-
 def radius_ratio_array(meshes: Meshes):
     faces = meshes.faces_packed()
     verts = meshes.verts_packed()
@@ -21,7 +16,7 @@ def radius_ratio_array(meshes: Meshes):
 
 
 def radius_ratio(A: ndarray, B: ndarray, C: ndarray):
-    # Calculate the vectors AB, AC, and BC
+    # Calculate the edge vectors AB, AC, and BC
     AB = B - A
     AC = C - A
     BC = C - B
